@@ -48,7 +48,7 @@ const srcRoot = resolve(src);
 
 const outRoot = out && resolve(out);
 
-console.log(
+verboseLog(
   `tscpaths --project ${configFile} --src ${srcRoot} --out ${outRoot}`
 );
 
@@ -174,9 +174,9 @@ for (let i = 0; i < flen; i += 1) {
   const newText = replaceAlias(text, file);
   if (text !== newText) {
     changedFileCount += 1;
-    console.log(`${file}: replaced ${replaceCount - prevReplaceCount} paths`);
+    verboseLog(`${file}: replaced ${replaceCount - prevReplaceCount} paths`);
     writeFileSync(file, newText, 'utf8');
   }
 }
 
-console.log(`Replaced ${replaceCount} paths in ${changedFileCount} files`);
+verboseLog(`Replaced ${replaceCount} paths in ${changedFileCount} files`);
